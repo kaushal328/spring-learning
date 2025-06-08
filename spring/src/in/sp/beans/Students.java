@@ -1,5 +1,6 @@
 package in.sp.beans;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,29 @@ public class Students {
 			private int rollno;
 			@Value("panchalkaushal636@gmail.com")
 			private String email;
-			public String getName() {
+
+			@Autowired
+			private Address address;
+
+	@Override
+	public String toString() {
+		return "Students{" +
+				"name='" + name + '\'' +
+				", rollno=" + rollno +
+				", email='" + email + '\'' +
+				", address=" + address +
+				'}';
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getName() {
 				return name;
 			}
 			public void setName(String name) {
@@ -28,11 +51,5 @@ public class Students {
 			}
 			public void setEmail(String email) {
 				this.email = email;
-			}
-			@Override
-			public String toString() {
-				return "Students [name=" + name + ","
-						+ " rollno=" + rollno + ", "
-								+ "email=" + email + "]";
 			}
 }
